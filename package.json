@@ -1,0 +1,59 @@
+{
+  "name": "ratp",
+  "version": "1.0.0",
+  "description": "NodeJS wrapper around RATP API",
+  "main": "lib/ratp.js",
+  "scripts": {
+    "lint": "eslint src test",
+    "test": "mocha --compilers js:babel-core/register --require babel-polyfill --recursive test",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meriadec/node-ratp.git"
+  },
+  "keywords": [
+    "node",
+    "ratp",
+    "api"
+  ],
+  "author": "Meriadec Pillet",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/meriadec/node-ratp/issues"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "globals": {
+      "expect": false,
+      "Promise": false
+    },
+    "extends": [
+      "zavatta"
+    ]
+  },
+  "homepage": "https://github.com/meriadec/node-ratp",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "eslint": "^3.13.1",
+    "eslint-config-zavatta": "^4.2.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "soap": "^0.18.0"
+  }
+}
