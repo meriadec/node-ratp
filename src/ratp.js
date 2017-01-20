@@ -14,38 +14,24 @@ export const methods = [
   'getMission',
 ]
 
-class Ratp {
+const wrapper = {}
 
-  constructor () {
-
-    this._client = null
-
-    methods.forEach(method => {
-      this[method] = payload =>
-        this.getClient().then(client =>
-          new Promise((resolve, reject) => {
-            client[method](payload, (err, res) => {
-              if (err) { return reject(err) }
-              resolve(res['return']) // eslint-disable-line dot-notation
-            })
-          }))
+methods.forEach(method => {
+  wrapper[method] = payload => getClient().then(client => new Promise((resolve, reject) => {
+    client[method](payload, (err, res) => {
+      if (err) { return reject(err) }
+      resolve(res['return']) // eslint-disable-line dot-notation
     })
+  }))
+})
 
-  }
-
-  getClient () {
-    return new Promise((resolve, reject) => {
-      if (this._client) {
-        return resolve(this._client)
-      }
-      soap.createClient(WSIV, (err, client) => {
-        if (err) { return reject(err) }
-        this._client = client
-        resolve(this._client)
-      })
+export function getClient () {
+  return new Promise((resolve, reject) => {
+    soap.createClient(WSIV, (err, client) => {
+      if (err) { return reject(err) }
+      resolve(client)
     })
-  }
-
+  })
 }
 
-export default Ratp
+export default wrapper

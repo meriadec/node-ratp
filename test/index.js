@@ -1,22 +1,19 @@
 import expect from 'expect'
 
-import Ratp from '../src/ratp'
+import ratp, { getClient } from '../src/ratp'
 
-describe('Ratp class', () => {
+describe('ratp', () => {
 
   it('should export Ratp class', () => {
-    expect(Ratp).toExist()
+    expect(ratp).toExist()
   })
 
   it('should create a client', async () => {
-    const ratp = new Ratp()
-    const client = await ratp.getClient()
+    const client = await getClient()
     expect(client).toExist()
   })
 
   it('should get a station', async () => {
-
-    const ratp = new Ratp()
 
     const payload = {
       station: {

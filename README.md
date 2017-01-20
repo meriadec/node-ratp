@@ -13,49 +13,35 @@ npm install ratp
 ## Usage
 
 ```javascript
-import Ratp from 'ratp'
-
-const ratp = new Ratp()
+import ratp from 'ratp'
 
 const payload = {
   station: {
-    name: 'chatelet',
+    line: {
+      code: '13',
+    },
+    name: 'gabriel peri',
   },
 }
 
-ratp
-  .getStations({
-    station: {
-      name: 'chatelet',
-    },
-  })
-  .then(res => {
+ratp.getStations(payload).then(res => {
 
-    console.log(res)
+  console.log(res)
 
-    // {
-    //   stations: [
-    //     {
-    //       geoPointA: [Object],
-    //       geoPointR: [Object],
-    //       id: '2036-2155',
-    //       line: [Object],
-    //       name: 'Chatelet',
-    //       stationArea: [Object]
-    //     },
-    //     {
-    //       geoPointA: [Object],
-    //       geoPointR: [Object],
-    //       id: '1964-2219',
-    //       line: [Object],
-    //       name: 'Chatelet',
-    //       stationArea: [Object]
-    //     },
-    //     ...etc.
-    //   ]
-    // }
+  // {
+  //   stations: [
+  //     {
+  //       geoPointA: [Object],
+  //       geoPointR: [Object],
+  //       id: '1947-2202',
+  //       line: [Object],
+  //       name: 'Gabriel-Peri',
+  //       stationArea: [Object]
+  //     }
+  //   ]
+  // }
 
-  })
+})
 ```
 
 ## Methods
